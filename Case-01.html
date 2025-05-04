@@ -2,9 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Knight Rider</title>
+
+
 </head>
+
+<style>
+
+
+    body {
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    body>section{
+        width: 100%;
+        height: 20%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #title{
+        font-size: 14px;
+        color: red;
+    }
+
+    #colors{
+        width: 70%;
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+    }
+
+    .container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .light {
+        justify-self: center;
+        align-self: center;
+        border-radius: 10px;
+        margin: 5px;
+        width: 100px;
+        height: 60px;
+        background-color: white;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+</style>
+
 <body>
+<section id="title">
+    <h1>JavaScript Knight Rider</h1>
+</section>
+
+<section id="colors">
+    <div class="container">
+        <div class="light" id="light0"></div>
+        <div class="light" id="light1"></div>
+        <div class="light" id="light2"></div>
+        <div class="light" id="light3"></div>
+        <div class="light" id="light4"></div>
+        <div class="light" id="light5"></div>
+        <div class="light" id="light6"></div>
+    </div>
+</section>
+
+<script>
+    const frames = [
+        ["red", "pink", "white", "white", "white", "white", "white"],
+        ["pink", "red", "pink", "white", "white", "white", "white"],
+        ["white", "pink", "red", "pink", "white", "white", "white"],
+        ["white", "white", "pink", "red", "pink", "white", "white"],
+        ["white", "white", "white", "pink", "red", "pink", "white"],
+        ["white", "white", "white", "white", "pink", "red", "pink"],
+        ["white", "white", "white", "white", "white", "pink", "red"],
+        ["white", "white", "white", "white", "pink", "red", "pink"],
+        ["white", "white", "white", "pink", "red", "pink", "white"],
+        ["white", "white", "pink", "red", "pink", "white", "white"],
+        ["white", "pink", "red", "pink", "white", "white", "white"],
+        ["pink", "red", "pink", "white", "white", "white", "white"],
+        ["red", "pink", "white", "white", "white", "white", "white"]
+    ];
+
+    let cells = document.getElementsByClassName('light');
+    let frame = 0;
+
+    const animate = () => {
+        let current = frames[frame];
+
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].style.backgroundColor = current[i];
+        }
+
+        frame++;
+        if (frame >= frames.length) {
+            frame = 0;
+        }
+    };
+
+    setInterval(animate, 150);
+</script>
 
 </body>
 </html>
